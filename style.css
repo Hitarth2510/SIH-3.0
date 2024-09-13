@@ -1,0 +1,92 @@
+/* Container styles */
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    padding: 25px;
+    width: 570px; /* Slightly increased width */
+    backdrop-filter: blur(10px);
+}
+
+/* Title styles */
+/* Title styles */
+h1 {
+    font-size: 32px; /* Further increased font size */
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Radar styles */
+#radar-box {
+    margin: 20px auto;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #004d7a, #001f3f);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Degree marks styles */
+.degree-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform-origin: left center;
+}
+
+/* Degree labels styles */
+.degree-label {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Table styles */
+table {
+    width: 90%; /* Increased width for better visibility */
+    max-width: 700px; /* Set a max width for larger screens */
+    margin-top: 15px;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table header styles */
+th {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 15px; /* Increased padding */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Table cell styles */
+td {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 15px; /* Increased padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Alternate row colors */
+tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Table row hover effect */
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
