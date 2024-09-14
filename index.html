@@ -17,13 +17,32 @@
             color: white;
         }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header img {
+            height: 50px;
+            width: auto;
+        }
+
+        .title {
+            text-align: center;
+            flex: 1;
+        }
+
         h1 {
             font-size: 32px;
             color: #f2f2f2;
-            margin-bottom: 20px;
+            margin: 0;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
             letter-spacing: 2px;
-            text-align: center;
         }
 
         .container {
@@ -127,18 +146,51 @@
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             display: none;
+            z-index: 1000;
         }
 
         .alert-message {
             margin: 0;
         }
 
+        .description {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .animated-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d9ff;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header img {
+                height: 40px;
+            }
+
             h1 {
                 font-size: 24px;
             }
@@ -151,15 +203,23 @@
                 width: 100%;
             }
 
-            #radar-box {
-                width: 60vw;
-                height: 60vw;
+            .description p {
+                font-size: 16px;
+            }
+
+            .animated-text {
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Gunshot Detection System</h1>
+    <div class="header">
+        <img src="images/logo.jpeg" alt="ByteBuster Logo">
+        <div class="title">
+            <h1>Gunshot Detection System</h1>
+        </div>
+    </div>
 
     <div id="alert-box">
         <p class="alert-message">Gunshot Detected!</p>
@@ -169,6 +229,17 @@
         <!-- Radar Box -->
         <div id="radar-box">
             <div class="radar-line"></div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="description">
+            <p class="animated-text">Real-time gunshot detection and localization system.</p>
+            <p>Use cases include:</p>
+            <ul>
+                <li>Enhanced safety for military operations.</li>
+                <li>Quick response for emergency services.</li>
+                <li>Surveillance for public safety.</li>
+            </ul>
         </div>
 
         <!-- Table for Timestamp and Direction -->
@@ -222,45 +293,18 @@
             });
         }
 
-        window.onload = function() {
-            addDegreeMarks();
-            addDirectionLabels();
-        };
+        // Initialize radar and labels
+        addDegreeMarks();
+        addDirectionLabels();
 
-        // Example: Receiving real-time data from the backend using WebSockets
-        var socket = new WebSocket("ws://localhost:3000");
-
-        socket.onmessage = function(event) {
-            const data = JSON.parse(event.data);
-            // Only update the radar and table if the alert is true
-            if (data.alert) {
-                appendToTable(data.timestamp, data.direction);
-                updateRadar(data.direction);
-                showAlert();
-            }
-        };
-
-        function updateRadar(degree) {
-            const radarLine = document.querySelector('.radar-line');
-            radarLine.style.transform = `rotate(${degree}deg)`;
-        }
-
-        function appendToTable(timestamp, direction) {
-            const tableBody = document.getElementById('data-table');
-            const directionMap = {0: 'N', 90: 'E', 180: 'S', 270: 'W'};
-            const directionLabel = directionMap[direction] || `${direction}°`;
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `<td>${timestamp}</td><td>${directionLabel}</td>`;
-            tableBody.appendChild(newRow);
-        }
-
-        function showAlert() {
+        // Example function to simulate removing random alerts
+        function removeRandomAlerts() {
             const alertBox = document.getElementById('alert-box');
-            alertBox.style.display = 'block';
-            setTimeout(() => {
-                alertBox.style.display = 'none';
-            }, 5000); // Hide after 5 seconds
+            alertBox.style.display = 'none';
         }
+
+        // Call the function to hide any alerts initially
+        removeRandomAlerts();
     </script>
 </body>
 </html>
