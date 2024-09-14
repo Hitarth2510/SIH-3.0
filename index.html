@@ -150,6 +150,11 @@
             .container {
                 width: 100%;
             }
+
+            #radar-box {
+                width: 60vw;
+                height: 60vw;
+            }
         }
     </style>
 </head>
@@ -227,11 +232,10 @@
 
         socket.onmessage = function(event) {
             const data = JSON.parse(event.data);
-            appendToTable(data.timestamp, data.direction);
-            updateRadar(data.direction);
-
-            // Show alert message when a gunshot is detected
+            // Only update the radar and table if the alert is true
             if (data.alert) {
+                appendToTable(data.timestamp, data.direction);
+                updateRadar(data.direction);
                 showAlert();
             }
         };
