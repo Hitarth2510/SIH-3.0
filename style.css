@@ -89,6 +89,7 @@ table {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
 th, td {
@@ -113,6 +114,22 @@ tbody tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+#alert-box {
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;
+}
+
+.alert-message {
+    margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     h1 {
@@ -125,5 +142,10 @@ tbody tr:nth-child(even) {
 
     .container {
         width: 100%;
+    }
+
+    #radar-box {
+        width: 60vw;
+        height: 60vw;
     }
 }
